@@ -197,12 +197,6 @@ public class JobController {
             throw new IllegalArgumentException("Path does not point to a .jar, .py or .ipynb file.");
           }
           return sparkController.inspectProgram(path, udfso);
-        case PYTHON:
-          if (Strings.isNullOrEmpty(path) || !(path.endsWith(".py") || path.endsWith(".ipynb") || path.endsWith(
-              ".egg") || path.endsWith(".zip"))) {
-            throw new IllegalArgumentException("Path does not point to a .py or .ipynb or .egg file.");
-          }
-          return new PythonJobConfiguration();
         default:
           throw new IllegalArgumentException("Job type not supported: " + jobType);
       }
